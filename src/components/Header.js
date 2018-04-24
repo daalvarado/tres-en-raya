@@ -3,12 +3,12 @@ import React from "react";
 // class Header extends React.Component {
 
 const Header = props => (
-  <header class="header">
-    <nav class="nav">
-      <li class="nav-item play" onClick={(e) => props.history.push('/')}>Jugar</li>
-      <li class="nav-item log" onClick={(e) => props.history.push('/Scores')}>Historico</li>
+  <header className="header">
+    <nav className="nav">
+      <li className="nav-item play" onClick={(e) => props.history.push('/')}>Jugar</li>
+      <li className="nav-item log" onClick={(e) => props.history.push('/Scores')}>Historico</li>
     </nav>
-    <h1 class="game-title">Tres en Raya</h1>
+    <h1 className="game-title">Tres en Raya</h1>
   </header>
 );
 

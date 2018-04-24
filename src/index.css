@@ -59,7 +59,7 @@ h1 {
   align-items: center;
   height: 100%;
   box-sizing: border-box;
-  border: 1px black solid;
+  border-right: 1px black solid;
   text-decoration: none;
   color: white;
 }

@@ -6,7 +6,7 @@ import Messages from "./Messages";
 import Table from "./Table";
 
 const Scores = (props) => (
-  <div class="container">
+  <div className="container">
     <Header history={props.history} />
     <Info />
     <Controls />

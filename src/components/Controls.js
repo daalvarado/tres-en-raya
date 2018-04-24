@@ -1,8 +1,8 @@
 import React from "react";
 
 const Controls = () => (
-  <div class="controls">
-    <button class="restart">Reiniciar</button>
+  <div className="controls">
+    <button className="restart">Reiniciar</button>
   </div>
 );
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Table = () => (
-  <div class="table">
+  <div className="table">
     <div>Table</div>
   </div>
 );
