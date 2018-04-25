@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import Header from "./Header";
 import Info from "./Info";
 import Controls from "./Controls";
+import ResetScores from "./ResetScores";
 import Messages from "./Messages";
 import Board from "./Board";
+import Table from "./Table";
+import {Route} from 'react-router-dom'
 
 let winningCells="";
 
@@ -75,21 +78,24 @@ class App extends Component {
   }
 
   resetScores = () => {
-    this.setState({ score: { "Player 1": 0, "Player-2": 0 } });
+    this.setState({ score: { "Player 1": 0, "Player 2": 0 } });
   }
 
   render() {
     console.log(this.state.score);
     let message = "";
+    let winningPlayer = this.state.gameOver ==='Player 1'?'Jugador 1':this.state.gameOver ==='Player 2'? 'Jugador 2': '';
     if (Object.values(this.state.cells).every(e => (e === 'empty'))) message = "Empieza el juego!!!";
-    if (this.state.gameOver !== "" && this.state.gameOver !== "empty") message = `JUEGO TERMINADO!!! \n ${this.state.gameOver} ha ganado!!!`; 
+    if (this.state.gameOver !== "" && this.state.gameOver !== "empty") message = `JUEGO TERMINADO!!! ${winningPlayer} ha ganado!!!`; 
     if (this.state.gameOver === "nobody") message = `JUEGO TERMINADO!!!`; 
     return <div className="container">
-        <Header history={this.props.history} score={this.state.score} resetScores={this.resetScores} />
+        <Route component={props => <Header/>}/>
         <Info current={this.state.current} gameOver={this.state.gameOver} />
-        <Controls resetGame={this.resetGame}/>
+        <Route exact path="/" component={props => <Controls resetGame={this.resetGame} />} />
+        <Route path="/Scores" component={props => <ResetScores resetScores={this.resetScores} />} />
         <Messages message={message} />
-        <Board updateCell={this.updateCell} cells={this.state.cells} gameOver={this.state.gameOver} winningCells={winningCells} />
+        <Route exact path="/" component={props => <Board updateCell={this.updateCell} cells={this.state.cells} gameOver={this.state.gameOver} winningCells={winningCells} />} />
+        <Route path="/Scores" component={(props) => <Table score={this.state.score} />} />
       </div>;
   }
 }

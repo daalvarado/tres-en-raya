@@ -64,6 +64,11 @@ h1 {
   color: white;
 }
 
+.nav-item a {
+  text-decoration: none;
+  color: white;
+}
+
 .nav-item:hover {
   cursor: pointer;
 }
@@ -156,13 +161,30 @@ h1 {
   font-family: "Russo One", sans-serif;
   font-size: 30px;
   width: 50%;
-  height: 25%;
+  height: 35%;
   color: #1a7dae;
 }
 
 .restart:hover {
   transform: scale(1.2);
   cursor: pointer;
+}
+
+li.active {
+  background: yellow;
+}
+
+li.active:hover {
+  cursor: default;
+}
+
+li.active a {
+  color: #1a7dae;
+  text-decoration: underline;
+}
+
+li.active a:hover {
+  cursor: default;
 }
 
 .messages {
@@ -194,6 +216,58 @@ h1 {
   background: #1a7dae;
   height: 100%;
   width: 100%;
+}
+
+.table-area {
+  display: grid;
+  grid-area: board;
+  background: #1a7dae;
+  height: 100%;
+  width: 100%;
+}
+
+.table-board {
+  display: grid;
+  height: 70%;
+  width: 60%;
+  background: yellow;
+  align-self: center;
+  justify-self: center;
+  grid-template-rows: 25% 75%;
+}
+
+.table-name {
+  display: grid;
+  height: 100%;
+  font-family: "Permanent Marker", cursive;
+  font-size: 3rem;
+  align-content: center;
+  justify-content: center;
+}
+
+.table {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 30% 70%;
+}
+
+.tplayer-name {
+  display: grid;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 3rem;
+  color: #e07a5f;
+  height: 100%;
+  align-content: center;
+  justify-content: center;
+}
+
+.tplayer-score {
+  display: grid;
+  height: 100%;
+  font-size: 10rem;
+  color: #1a7dae;
+  align-content: center;
+  justify-content: center;
 }
 
 #game-board {
