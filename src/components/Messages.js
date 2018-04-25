@@ -1,8 +1,8 @@
 import React from "react";
 
-const Messages = () => (
+const Messages = props => (
   <div className="messages">
-    <div id="message-box">No hay mensajes</div>
+    <div id="message-box">{props.message}</div>
   </div>
 );
 

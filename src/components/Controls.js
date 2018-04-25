@@ -1,8 +1,8 @@
 import React from "react";
 
-const Controls = () => (
+const Controls = (props) => (
   <div className="controls">
-    <button className="restart">Reiniciar</button>
+    <button onClick={props.resetGame} className="restart">Reiniciar</button>
   </div>
 );
 

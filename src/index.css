@@ -226,6 +226,14 @@ h1 {
   background: white;
 }
 
+.cell.game-over {
+  filter: opacity(0.2);
+}
+
+.cell.game-over:hover {
+  cursor: none;
+}
+
 .cell.p1 {
   background: var(--player1);
   box-sizing: border-box;
