@@ -12,7 +12,7 @@ class App extends Component {
     
     current: "Player 1",
     cells: {'cell-1': 'empty','cell-2': 'empty','cell-3': 'empty','cell-4': 'empty','cell-5': 'empty','cell-6': 'empty','cell-7': 'empty','cell-8': 'empty','cell-9': 'empty'},
-    score: {'Player 1': 0, 'Player-2':0},
+    score: {'Player 1': 0, 'Player 2':0},
     gameOver: ""
   };
 
@@ -45,6 +45,9 @@ class App extends Component {
       if (winners[winner].every(e=> player.includes(e))) {
         this.setState({gameOver:this.state.current});
         winningCells=winners[winner];
+        const score = { ...this.state.score };
+        score[this.state.current]=score[this.state.current]+1;
+        this.setState({score});
         return;
     }
     }}
@@ -76,12 +79,13 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.score);
     let message = "";
     if (Object.values(this.state.cells).every(e => (e === 'empty'))) message = "Empieza el juego!!!";
     if (this.state.gameOver !== "" && this.state.gameOver !== "empty") message = `JUEGO TERMINADO!!! \n ${this.state.gameOver} ha ganado!!!`; 
     if (this.state.gameOver === "nobody") message = `JUEGO TERMINADO!!!`; 
     return <div className="container">
-        <Header history={this.props.history} />
+        <Header history={this.props.history} score={this.state.score} resetScores={this.resetScores} />
         <Info current={this.state.current} gameOver={this.state.gameOver} />
         <Controls resetGame={this.resetGame}/>
         <Messages message={message} />
