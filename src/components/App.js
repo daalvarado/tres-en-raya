@@ -19,6 +19,17 @@ class App extends Component {
     gameOver: ""
   };
 
+  componentDidMount() {
+    const localStorageRef = localStorage.getItem('score');
+    if (localStorageRef) {
+      this.setState({'score': JSON.parse(localStorageRef)})
+    }
+  }
+
+  componentDidUpdate(){
+    localStorage.setItem('score',JSON.stringify(this.state.score));
+  };
+
   updateCell = (key) => {
     const cells = {...this.state.cells};
     cells[key] = this.state.current;
@@ -82,11 +93,10 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.score);
     let message = "";
     let winningPlayer = this.state.gameOver ==='Player 1'?'Jugador 1':this.state.gameOver ==='Player 2'? 'Jugador 2': '';
     if (Object.values(this.state.cells).every(e => (e === 'empty'))) message = "Empieza el juego!!!";
-    if (this.state.gameOver !== "" && this.state.gameOver !== "empty") message = `JUEGO TERMINADO!!! ${winningPlayer} ha ganado!!!`; 
+    if (this.state.gameOver !== "" && this.state.gameOver !== "empty") message = `${winningPlayer} ha ganado!!!`; 
     if (this.state.gameOver === "nobody") message = `JUEGO TERMINADO!!!`; 
     return <div className="container">
         <Route component={props => <Header/>}/>
